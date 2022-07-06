@@ -6,25 +6,20 @@ export const styles = {
     borderRadius: "5px",
     
   },
-  mainTitle: {
+    mainTitle: {
     textAlign: "center",
     fontSize: "30px",
-    //marginBottom: "40px",
   },
   submitButton: {
     width: "100%",
     
     justifyContent: "center",
     alignItems:"center",
-    //size:"large",
     marginTop: "20px",
-    //borderRadius: "0p",
-    background: "##0800ff",
+    background: "green",
     "&:hover": {
-      backgroundColor: "##0800ff",
-      /* boxShadow:
-         */
-        //"0 14px 26px -12px rgba(156, 39, 176, 0.42), 0 4px 23px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(156, 39, 176, 0.2)",
+      backgroundColor: "green",
+      
     },
   },
   question: {
@@ -38,7 +33,6 @@ export const styles = {
     marginBottom: "10px",
     fontWeight: "500",
     lineHeight: "25px",
-    //marginLeft: "10px",
     display: "flex",
   },
   correctAnswer: {
