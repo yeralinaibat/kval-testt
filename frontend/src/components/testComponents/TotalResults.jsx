@@ -16,10 +16,10 @@ const TotalResults = ({
   return currentQuizStep === "results" ? (
     <div style={styles.results}>
       <Typography variant="h1" style={styles.mainTitle}>
-        Results
+        результат
       </Typography>
       <Typography variant="h4">
-        {processedAnswers.filter(({ isCorrect }) => isCorrect).length} out of{" "}
+        {processedAnswers.filter(({ isCorrect }) => isCorrect).length} из {" "}
         {processedAnswers.length}
       </Typography>
       <Button
@@ -30,7 +30,7 @@ const TotalResults = ({
         variant="contained"
         color="primary"
       >
-        Review
+        ПОСМОТРЕТЬ ОТВЕТЫ
       </Button>{" "}
       <Button
         onClick={resetQuiz}
@@ -38,7 +38,7 @@ const TotalResults = ({
         variant="contained"
         color="primary"
       >
-        Reset
+        ВЫХОД
       </Button>
     </div>
   ) : (

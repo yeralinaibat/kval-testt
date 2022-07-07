@@ -96,13 +96,13 @@ const QuizAnswers = ({
                 </Typography>
                 <FormControl fullWidth variant="outlined">
                   <InputLabel id="answer-select-label">
-                    Select answer:
+                    Ваш ответ
                   </InputLabel>
                   <Select
                     required
                     name="answer"
                     id="answer-select"
-                    label="Select answer"
+                    label="Ваш ответ"
                     value={relatedAnswer(quiz.question, selectedAnswers) || ""}
                     labelId="answer-select-label"
                     onChange={(e) => handleAnswerChange(e, quiz.question)}
@@ -122,7 +122,7 @@ const QuizAnswers = ({
               color="primary"
               type="submit"
             >
-              Result
+              ПРОВЕРИТЬ
             </Button>
           </Grid>
         </Grid>

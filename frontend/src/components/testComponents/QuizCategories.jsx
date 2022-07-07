@@ -34,6 +34,7 @@ const QuizCategories = () => {
   const fetchQuizData = async () => {
     try {
       const url = `https://opentdb.com/api.php?amount=${quizNumber}&category=${category.id}&difficulty=${difficulty.name.toLowerCase()}`;
+      
       const { data } = await axios.get(url);
 
       const formattedCategory = data.results.map((cat) => {
@@ -131,7 +132,7 @@ const QuizCategories = () => {
                       name="category"
                       value={category.id || ""}
                       id="category-select"
-                      label="Select category"
+                      label="Выберите категорию"
                       labelId="category-select-label"
                       onChange={handleSelectChange}
                     >
@@ -158,7 +159,7 @@ const QuizCategories = () => {
                       name="difficulty"
                       value={difficulty.id || ""}
                       id="difficulty-select"
-                      label="Select Difficulty"
+                      label="Уровень"
                       labelId="difficulty-select-label"
                       onChange={handleDifficultyChange}
                     >

@@ -36,7 +36,7 @@ const AnswersReview = ({ processedAnswers, resetQuiz }) => {
             <>
               <Typography
                 variant="h3"
-                color="secondary"
+                color="red"
                 style={styles.answer}
               >
                 <Close />
@@ -65,7 +65,7 @@ const AnswersReview = ({ processedAnswers, resetQuiz }) => {
   return (
     <>
       <Typography variant="h1" style={styles.mainTitle}>
-        Answers review:
+        ОТВЕТЫ
       </Typography>
       {renderAnswers(processedAnswers)}
       <Button
@@ -74,7 +74,7 @@ const AnswersReview = ({ processedAnswers, resetQuiz }) => {
         variant="contained"
         color="primary"
       >
-        Reset
+        ЗАВЕРШИТЬ
       </Button>
     </>
   );
