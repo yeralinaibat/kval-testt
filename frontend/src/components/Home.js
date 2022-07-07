@@ -27,7 +27,7 @@ export default function ControlledAccordions() {
           <Typography sx={{ lineHeight:1,flexShrink: 1,
    color: 'blue'}}>
           
-          <>Предмет 35 из 70</>
+          <>Предмет 35 из 70 /</>
           <> Педагогика 9 из 30</>
           
           </Typography>
@@ -49,8 +49,8 @@ export default function ControlledAccordions() {
           <Typography sx={{ lineHeight:1,flexShrink: 1,
    color: 'blue'}}>
           
-          <>Предмет 35 из 70</>
-          <> Педагогика 9 из 30</>
+          <>Предмет 42 из 70 /</>
+          <> Педагогика 12 из 30</>
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
@@ -73,8 +73,8 @@ export default function ControlledAccordions() {
           <Typography sx={{ lineHeight:1,flexShrink: 1,
    color: 'blue'}}>
           
-          <>Предмет 35 из 70</>
-          <> Педагогика 9 из 30</>
+          <>Предмет 49 из 70 /</>
+          <> Педагогика 15 из 30</>
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
@@ -94,8 +94,8 @@ export default function ControlledAccordions() {
           <Typography sx={{ lineHeight:1,flexShrink: 1,
    color: 'blue'}}>
           
-          <>Предмет 35 из 70</>
-          <> Педагогика 9 из 30</>
+          <>Предмет 56 из 70 /</>
+          <> Педагогика 18 из 30</>
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
@@ -115,7 +115,7 @@ export default function ControlledAccordions() {
           <Typography sx={{ lineHeight:1,flexShrink: 1,
    color: 'blue'}}>
           
-          <>Предмет 63 из 70</>
+          <>Предмет 63 из 70 /</>
           <> Педагогика 21 из 30</>
           </Typography>
         </AccordionSummary>
