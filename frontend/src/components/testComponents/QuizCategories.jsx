@@ -15,7 +15,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 
 
-import { styles, difficulties, createMarkup } from "../../helpers";
+import { styles, language, createMarkup } from "../../helpers";
 import QuizAnswers from "./QuizAnswers";
 
 
@@ -25,19 +25,26 @@ const QuizCategories = () => {
   const [category, setCategory] = useState({ id: "", name: "" });
 
   const [quizNumber, setQuizNumber] = useState(null);
-  const [difficulty, setDifficulty] = useState({ id: "", name: "" });
+  const [languages, setLanguages] = useState({ id: "", name: "" });
 
   const [quizData, setQuizData] = useState([]);
 
   const [currentQuizStep, setCurrentQuizStep] = useState("start");
 
-  const fetchQuizData = async () => {
+  const postQuizData = async () => {
     try {
-      const url = `https://opentdb.com/api.php?amount=${quizNumber}&category=${category.id}&difficulty=${difficulty.name.toLowerCase()}`;
-      
-      const { data } = await axios.get(url);
+      //const url = `https://opentdb.com/api.php?amount=${quizNumber}&category=${category.id}&languages=${languages.name.toLowerCase()}`;
+     //console.log("object");
+      //const url = `http://localhost:5000/api/get-tests-by-category/?category=${category.id}&languages=${languages.name.toLowerCase()}&amount=${quizNumber}`;
+    
 
-      const formattedCategory = data.results.map((cat) => {
+      const { data } = await axios.get("http://localhost:5000/api/get-tests-by-category", { params: {
+        category: category.name,
+        languages: languages.name,
+        amount: quizNumber,
+      } })
+
+      const formattedCategory = data.map((cat) => {
 
         const incorrectAnswersIndexes = cat.incorrect_answers.length;
         const randomIndex = Math.round(
@@ -59,9 +66,25 @@ const QuizCategories = () => {
     }
   };
 
+ /*  const fetchCategories = async () => {
+    console.log({
+      category: category.id,
+      languages:languages.name.toLowerCase(),
+      amount: quizNumber,
+    });
+
+    const { data } = await axios.get(`http://localhost:5000/api/get-tests-by-category/`,{
+      category: category.id,
+      languages:languages.name.toLowerCase(),
+      amount: quizNumber,
+    });
+
+     setCategories(data.categories ?? []);
+  }; */
+
   const fetchCategories = async () => {
-    const { data } = await axios.get(`https://opentdb.com/api_category.php`);
-    setCategories(data.trivia_categories);
+    const { data } = await axios.get(`http://localhost:5000/api/get-categories`);
+    setCategories(data.categories);
   };
 
   useEffect(() => {
@@ -71,8 +94,8 @@ const QuizCategories = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!quizData.length && quizNumber && category.id && difficulty) {
-      fetchQuizData();
+    if (!quizData.length && quizNumber && category.id && languages) {
+      postQuizData();
     }
   };
 
@@ -84,12 +107,12 @@ const QuizCategories = () => {
     setCategory(selectedCategory);
   };
 
-  const handleDifficultyChange = (e) => {
+  const handleLanguagesChange = (e) => {
     e.preventDefault();
-    const selectedDifficulty = difficulties.find(
-      (diff) => diff.id === e.target.value
+    const selectedLanguages = language.find(
+      (lang) => lang.id === e.target.value
     );
-    setDifficulty(selectedDifficulty);
+    setLanguages(selectedLanguages);
   };
 
   const handleChange = (e) => {
@@ -102,14 +125,12 @@ const QuizCategories = () => {
     setQuizData([]);
     setCategory("");
     setQuizNumber("");
-    setDifficulty("");
+    setLanguages("");
     setCurrentQuizStep("start");
     window.scrollTo(0, "20px");
   };
 
-  if (!categories.length) {
-    return null;
-  }
+
 
   return (
    
@@ -150,22 +171,22 @@ const QuizCategories = () => {
                 </Grid>
                 <Grid item xs={12}>
                   <FormControl fullWidth variant="outlined">
-                    <InputLabel id="difficulty-select-label">
-                      Уровень
+                    <InputLabel id="Languages-select-label">
+                      Язык
                     </InputLabel>
                     <Select
                       required
                       
-                      name="difficulty"
-                      value={difficulty.id || ""}
-                      id="difficulty-select"
+                      name="languages" //difficulty
+                      value={languages.id || ""}
+                      id="Languages-select"
                       label="Уровень"
-                      labelId="difficulty-select-label"
-                      onChange={handleDifficultyChange}
+                      labelId="languages-select-label"
+                      onChange={handleLanguagesChange}
                     >
-                      {difficulties.map((difficulty) => (
-                        <MenuItem key={difficulty.id} value={difficulty.id}>
-                          {difficulty.name}
+                      {language.map((languages) => (
+                        <MenuItem key={languages.id} value={languages.id}>
+                          {languages.name}
                         </MenuItem>
                       ))}
                     </Select>
